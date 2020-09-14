@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T17:19:34+10:00"
+    "timestamp": "2020-09-14T17:55:33+10:00"
   },
   "software": {
     "base": {
@@ -58,7 +58,8 @@
         "name": "hello",
         "download_type": "git",
         "source_url": "https://github.com/jvodan/helloworldhtml",
-        "destination": "/home/app/www",
+        "destination": "/home/app/www/",
+        "extraction_command": "git",
         "path_to_extracted": "hello"
       }
     ],
