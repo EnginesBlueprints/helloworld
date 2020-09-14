@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T16:56:30+10:00"
+    "timestamp": "2020-09-14T17:07:46+10:00"
   },
   "software": {
     "base": {
@@ -76,6 +76,13 @@
       {
         "path": "/home/app/log/nginx/",
         "recursive": true
+      },
+      {
+        "path": "/home/app/run/",
+        "recursive": true
+      },
+      {
+        "path": "/var/log/nginx"
       }
     ]
   }
