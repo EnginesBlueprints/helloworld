@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T17:07:46+10:00"
+    "timestamp": "2020-09-14T17:19:34+10:00"
   },
   "software": {
     "base": {
@@ -58,14 +58,14 @@
         "name": "hello",
         "download_type": "git",
         "source_url": "https://github.com/jvodan/helloworldhtml",
-        "destination": "/home/app",
+        "destination": "/home/app/www",
         "path_to_extracted": "hello"
       }
     ],
     "template_files": [
       {
         "path": "/app/etc/nginx/sites-enabled/default",
-        "content": "server {\r\n    listen 8080;\r\n  \r\nlocation / {\r\n    root /home/app/data/www;\r\n}\r\n}"
+        "content": "server {\r\n    listen 8080;\r\n  \r\nlocation / {\r\n    root /home/app/www;\r\n}\r\n}"
       },
       {
         "path": "/app/etc/nginx/nginx.conf",
@@ -82,7 +82,8 @@
         "recursive": true
       },
       {
-        "path": "/var/log/nginx"
+        "path": "/var/log/nginx",
+        "recursive": true
       }
     ]
   }
