@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T16:00:36+10:00"
+    "timestamp": "2020-09-14T16:06:28+10:00"
   },
   "software": {
     "base": {
@@ -45,12 +45,21 @@
         "content": "#!/bin/sh\r\n\r\nnginx -c /home/app/etc/nginx/nginx.conf &\r\n\r\nwait\r\n\r\n\r\n#here for debug only in case above doesn't start\r\nsleep 300 \r\n\r\n"
       },
       "install": {
-        "content": "#!/bin/sh\r\n\r\nmkdir -p /home/app/data/html\r\necho '<html><h1>Hello World</h1></html>' >/home/app/data/html/index.html\r\n\r\nmkdir /home/app/log/nginx /home/app/nginx  /home/app/run\r\n\r\n\r\n"
+        "content": "#!/bin/sh\r\n\r\nmkdir -p /home/app/data/html\r\n\r\n\r\nmkdir -p  /home/app/log/nginx /home/app/nginx  /home/app/run \r\n\r\n\r\n"
       }
     },
     "system_packages": [
       {
         "package": "nginx"
+      }
+    ],
+    "installed_packages": [
+      {
+        "name": "hello",
+        "download_type": "git",
+        "source_url": "https://github.com/jvodan/helloworldhtml",
+        "destination": "/home/app",
+        "path_to_extracted": "hello"
       }
     ],
     "template_files": [
