@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T16:06:28+10:00"
+    "timestamp": "2020-09-14T16:11:37+10:00"
   },
   "software": {
     "base": {
@@ -64,11 +64,11 @@
     ],
     "template_files": [
       {
-        "path": "/home/app/etc/nginx/sites-enabled/default",
+        "path": "/app/etc/nginx/sites-enabled/default",
         "content": "server {\r\n    listen 8080;\r\n  \r\nlocation / {\r\n    root /home/app/data/www;\r\n}\r\n}"
       },
       {
-        "path": "/home/app/etc/nginx/nginx.conf ",
+        "path": "/app/etc/nginx/nginx.conf ",
         "content": "worker_processes auto;\r\npid /home/app/run/nginx.pid;\r\ninclude /etc/nginx/modules-enabled/*.conf;\r\ninclude /home/app/etc/nginx/modules-enabled/*.conf;\r\n\r\nevents {\r\n        worker_connections 768;\r\n        # multi_accept on;\r\n}\r\n\r\nhttp {\r\n\r\n        ##\r\n        # Basic Settings\r\n        ##\r\n\r\n        sendfile on;\r\n        tcp_nopush on;\r\n        tcp_nodelay on;\r\n        keepalive_timeout 65;\r\n        types_hash_max_size 2048;\r\n        # server_tokens off;\r\n\r\n        # server_names_hash_bucket_size 64;\r\n        # server_name_in_redirect off;\r\n\r\n        include /etc/nginx/mime.types;\r\n        default_type application/octet-stream;\r\n\r\n        ##\r\n        # SSL Settings\r\n        ##\r\n\r\n        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE\r\n        ssl_prefer_server_ciphers on;\r\n\r\n        ##\r\n        # Logging Settings\r\n        ##\r\n\r\n        access_log /home/app/log/nginx/access.log;\r\n        error_log /home/app/log/nginx/error.log;\r\n     ##\r\n        # Gzip Settings\r\n        ##\r\n\r\n        gzip on;\r\n\r\n        # gzip_vary on;\r\n        # gzip_proxied any;\r\n        # gzip_comp_level 6;\r\n        # gzip_buffers 16 8k;\r\n        # gzip_http_version 1.1;\r\n        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;\r\n\r\n        ##\r\n        # Virtual Host Configs\r\n        ##\r\n\r\n        include /etc/nginx/conf.d/*.conf;\r\n        include /home/app/etc/nginx/sites-enabled/*;\r\n}\r\n\r\n\r\ndaemon off;\r\n"
       }
     ]
