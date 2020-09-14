@@ -15,12 +15,42 @@
         "level": "alpha",
         "patch": 0
       }
-    }
+    },
+    "timestamp": "2020-09-14T13:38:14+10:00"
   },
   "software": {
     "base": {
-      "deployment_type": "web",
-      "http_protocol": "https_and_http"
-    }
+      "name": "helloworld",
+      "framework": "docker",
+      "parent_image": "debian:buster",
+      "run_as_user": "www-data",
+      "deployment_type": "worker",
+      "http_protocol": "https_and_http",
+      "framework_port_override": 80,
+      "username": "www-data",
+      "memory": {
+        "required": 128
+      }
+    },
+    "scripts": {
+      "start": {
+        "language": "sh",
+        "content": "#!/bin/sh\r\n\r\nnginx -f /etc/nginx/nginx.conf &\r\n\r\nwait\r\n\r\n\r\n"
+      },
+      "install": {
+        "content": "#!/bin/sh\r\n\r\necho '<html><h1>Hello World</h1></html>' >/data/html/index.html"
+      }
+    },
+    "system_packages": [
+      {
+        "package": "nginx"
+      }
+    ],
+    "template_files": [
+      {
+        "path": "/etc/nginx/sites-enabled/default",
+        "content": "server {\r\n    listen 8080;\r\n  \r\nlocation / {\r\n    root /data/www;\r\n}\r\n}"
+      }
+    ]
   }
 }
