@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T13:38:14+10:00"
+    "timestamp": "2020-09-14T15:23:19+10:00"
   },
   "software": {
     "base": {
@@ -35,7 +35,7 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/sh\r\n\r\nnginx -f /etc/nginx/nginx.conf &\r\n\r\nwait\r\n\r\n\r\n"
+        "content": "#!/bin/sh\r\n\r\nnginx -f /etc/nginx/nginx.conf &\r\n\r\nsleep 300\r\nwait\r\n\r\n\r\n"
       },
       "install": {
         "content": "#!/bin/sh\r\n\r\necho '<html><h1>Hello World</h1></html>' >/data/html/index.html"
