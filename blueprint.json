@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2020-09-14T17:55:33+10:00"
+    "timestamp": "2020-09-15T10:33:51+10:00"
   },
   "software": {
     "base": {
@@ -42,10 +42,10 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/sh\r\n\r\nnginx -c /home/app/etc/nginx/nginx.conf &\r\n\r\nwait\r\n\r\n\r\n#here for debug only in case above doesn't start\r\nsleep 300 \r\n\r\n"
+        "content": "#!/bin/sh\r\n\r\nnginx -c /etc/nginx/nginx.conf &\r\n\r\nwait\r\n\r\n\r\n\r\n"
       },
       "install": {
-        "content": "#!/bin/sh\r\n\r\nmkdir -p /home/app/data/html\r\n\r\n\r\nmkdir -p  /home/app/log/nginx /home/app/nginx  /home/app/run \r\n\r\nmkdir /var/log/nginx /var/lib/nginx ; chown www-data /var/log/nginx/  /var/lib/nginx/ /run \r\n\r\n"
+        "content": "#!/bin/sh\r\n\r\n\r\n\r\nmkdir -p  /var/log/nginx /var/lib/nginx  \r\n\r\nmkdir /var/log/nginx /var/lib/nginx ; chown www-data /var/log/nginx/  /var/lib/nginx/ /run \r\n\r\n"
       }
     },
     "system_packages": [
@@ -70,7 +70,7 @@
       },
       {
         "path": "/app/etc/nginx/nginx.conf",
-        "content": "worker_processes auto;\r\npid /home/app/run/nginx.pid;\r\ninclude /etc/nginx/modules-enabled/*.conf;\r\ninclude /home/app/etc/nginx/modules-enabled/*.conf;\r\n\r\nevents {\r\n        worker_connections 768;\r\n        # multi_accept on;\r\n}\r\n\r\nhttp {\r\n\r\n        ##\r\n        # Basic Settings\r\n        ##\r\n\r\n        sendfile on;\r\n        tcp_nopush on;\r\n        tcp_nodelay on;\r\n        keepalive_timeout 65;\r\n        types_hash_max_size 2048;\r\n        # server_tokens off;\r\n\r\n        # server_names_hash_bucket_size 64;\r\n        # server_name_in_redirect off;\r\n\r\n        include /etc/nginx/mime.types;\r\n        default_type application/octet-stream;\r\n\r\n        ##\r\n        # SSL Settings\r\n        ##\r\n\r\n        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE\r\n        ssl_prefer_server_ciphers on;\r\n\r\n        ##\r\n        # Logging Settings\r\n        ##\r\n\r\n        access_log /home/app/log/nginx/access.log;\r\n        error_log /home/app/log/nginx/error.log;\r\n     ##\r\n        # Gzip Settings\r\n        ##\r\n\r\n        gzip on;\r\n\r\n        # gzip_vary on;\r\n        # gzip_proxied any;\r\n        # gzip_comp_level 6;\r\n        # gzip_buffers 16 8k;\r\n        # gzip_http_version 1.1;\r\n        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;\r\n\r\n        ##\r\n        # Virtual Host Configs\r\n        ##\r\n\r\n        include /etc/nginx/conf.d/*.conf;\r\n        include /home/app/etc/nginx/sites-enabled/*;\r\n}\r\n\r\n\r\ndaemon off;\r\n"
+        "content": "worker_processes auto;\r\npid run/nginx.pid;\r\ninclude /etc/nginx/modules-enabled/*.conf;\r\n\r\nevents {\r\n        worker_connections 768;\r\n        # multi_accept on;\r\n}\r\n\r\nhttp {\r\n\r\n        ##\r\n        # Basic Settings\r\n        ##\r\n\r\n        sendfile on;\r\n        tcp_nopush on;\r\n        tcp_nodelay on;\r\n        keepalive_timeout 65;\r\n        types_hash_max_size 2048;\r\n        # server_tokens off;\r\n\r\n        # server_names_hash_bucket_size 64;\r\n        # server_name_in_redirect off;\r\n\r\n        include /etc/nginx/mime.types;\r\n        default_type application/octet-stream;\r\n\r\n        ##\r\n        # SSL Settings\r\n        ##\r\n\r\n        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE\r\n        ssl_prefer_server_ciphers on;\r\n\r\n        ##\r\n        # Logging Settings\r\n        ##\r\n\r\n        access_log /var/log/nginx/access.log;\r\n        error_log /var/log/nginx/error.log;\r\n     ##\r\n        # Gzip Settings\r\n        ##\r\n\r\n        gzip on;\r\n\r\n        # gzip_vary on;\r\n        # gzip_proxied any;\r\n        # gzip_comp_level 6;\r\n        # gzip_buffers 16 8k;\r\n        # gzip_http_version 1.1;\r\n        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;\r\n\r\n        ##\r\n        # Virtual Host Configs\r\n        ##\r\n\r\n        include /etc/nginx/conf.d/*.conf;\r\n\r\n}\r\n\r\n\r\ndaemon off;\r\n"
       }
     ],
     "file_write_permissions": [
